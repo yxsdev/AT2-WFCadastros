@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35825.156
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AT2-WFCadastros", "AT2-WFCadastros.csproj", "{BAF10FEE-AA9C-466E-86E2-5A1EC2A8A4D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AT2-CadastroPessoa", "..\AT2-CadastroPessoa\AT2-CadastroPessoa.csproj", "{E294C4DA-B9DB-4912-AB04-4CC1392F3111}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BAF10FEE-AA9C-466E-86E2-5A1EC2A8A4D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAF10FEE-AA9C-466E-86E2-5A1EC2A8A4D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAF10FEE-AA9C-466E-86E2-5A1EC2A8A4D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAF10FEE-AA9C-466E-86E2-5A1EC2A8A4D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E294C4DA-B9DB-4912-AB04-4CC1392F3111}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E294C4DA-B9DB-4912-AB04-4CC1392F3111}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E294C4DA-B9DB-4912-AB04-4CC1392F3111}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E294C4DA-B9DB-4912-AB04-4CC1392F3111}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {39977088-8CDB-4D25-A2E3-7AB29D6984D8}
+	EndGlobalSection
+EndGlobal
