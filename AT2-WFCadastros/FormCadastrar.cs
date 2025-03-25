@@ -15,11 +15,6 @@ namespace AT2_WFCadastros
         public FormCadastrar()
         {
             InitializeComponent();
-            dtpDataCadastro.Value = DateTime.Today;
-
-            cmbStatus.Items.Add("Ativo");
-            cmbStatus.Items.Add("Inativo");
-            cmbStatus.SelectedIndex = 0;
         }
 
         public void Erro(string mensagem)
@@ -32,53 +27,79 @@ namespace AT2_WFCadastros
             MessageBox.Show(mensagem, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        public void LimparFormulario()
+        private void LimparFormulario()
         {
-            mtbCodigo.Clear();
+            int quantidadeLista = Categoria.ListaProduto.Count;
+            int codigo = quantidadeLista + 1;
+            mtbCodigo.Text = codigo.ToString("D4");
             txtNomeCategoria.Clear();
             txtDescricao.Clear();
+            rdbInativo.Checked = false;
+            rdbAtivo.Checked = false;
         }
 
-        private void btnCadastrar_Click(object sender, EventArgs e)
+        public bool CamposPreenchidos()
         {
             if (string.IsNullOrEmpty(mtbCodigo.Text))
             {
                 Erro("Campo Código não pode estar Vazio!");
-                return;
+                return true;
             }
             else if (string.IsNullOrEmpty(txtNomeCategoria.Text))
             {
-                Erro("Campo Nome do Produto não pode estar Vazio!");
-                return;
+                Erro("Campo Nome da Categoria não pode estar Vazio!");
+                return true;
             }
             else if (string.IsNullOrEmpty(txtDescricao.Text))
             {
                 Erro("Campo Descrição não pode estar Vazio!");
-                return;
+                return true;
             }
-            else if (string.IsNullOrEmpty(cmbStatus.Text))
+            else if (rdbAtivo.Checked == false && rdbInativo.Checked == false)
             {
                 Erro("Campo Status não pode estar Vazio!");
-                return;
+                return true;
             }
 
-            Categoria categoria = new Categoria();
-            categoria.Codigo = Convert.ToInt32(mtbCodigo.Text);
-            categoria.NomeCategoria = txtNomeCategoria.Text;
-            categoria.Descricao = txtDescricao.Text;
-            DateTime dataCadastro = dtpDataCadastro.Value;
-            categoria.DataCadastro = dataCadastro;
-            categoria.Status = cmbStatus.Text;
+            return false;
+        }
+
+        private void btnCadastrar_Click(object sender, EventArgs e)
+        {
+            if (this.CamposPreenchidos() == false)
+            {
+                Categoria categoria = new Categoria();
+                categoria.Codigo = int.Parse(mtbCodigo.Text);
+                categoria.NomeCategoria = txtNomeCategoria.Text;
+                categoria.Descricao = txtDescricao.Text;
+
+                if (rdbAtivo.Checked)
+                {
+                    categoria.status = Status.Ativo;
+                }
+                else
+                {
+                    categoria.status = Status.Inativo;
+                }
+
+                categoria.DataCadastro = DateTime.Now;
 
 
-            Categoria.ListaProduto.Add(categoria);
+                Categoria.ListaProduto.Add(categoria);
 
-            FormListar formListaProduto = new FormListar();
-            formListaProduto.Show();
 
-            Sucesso("Cadastrado com Sucesso!");
+                Sucesso("Cadastrado com Sucesso!");
 
-            LimparFormulario();
+
+                LimparFormulario();
+            }
+        }
+
+        private void FormCadastrar_Load(object sender, EventArgs e)
+        {
+            int quantidadeLista = Categoria.ListaProduto.Count;
+            int codigo = quantidadeLista + 1;
+            mtbCodigo.Text = codigo.ToString("D4");
         }
     }
 }
